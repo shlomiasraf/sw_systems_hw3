@@ -1,6 +1,29 @@
 #include <stdio.h>
 #include "StrList.h"
+#include <ctype.h>
+char* scan_word() 
+{
+    char* word = NULL;
+    int word_size = 0;
+    char ch;
 
+    // Skip leading whitespace characters
+    while (scanf("%c", &ch) == 1 && isspace(ch));
+
+    // Read the word
+    while (!isspace(ch)) 
+    {
+        word = realloc(word, (word_size + 1) * sizeof(char));
+        word[word_size++] = ch;
+        if (scanf("%c", &ch) != 1) 
+        {
+            break;
+        }
+    }
+    word = realloc(word, (word_size + 1) * sizeof(char));
+    word[word_size] = '\0';
+    return word;
+}
 int main() 
 {
     StrList* Strlist= StrList_alloc();
@@ -14,9 +37,7 @@ int main()
             scanf( "%d", &sizeNum);
             for(int i = 0; i < sizeNum; i++)
             {
-                char *word;
-                word = (char *)malloc(50 * sizeof(char));  
-                scanf("%s", word);
+                char* word = scan_word();
                 StrList_insertLast(Strlist ,word);
                 free(word);
             }
@@ -25,9 +46,7 @@ int main()
         {
             int index;
             scanf( "%d", &index);
-            char *word;
-            word = (char *)malloc(50 * sizeof(char));  
-            scanf("%s", word);
+            char* word = scan_word();
             StrList_insertAt(Strlist ,word,index);
             free(word);
 
@@ -40,32 +59,34 @@ int main()
         {
             int size = StrList_size(Strlist);
             printf( "%d", size);
+            printf("\n");
         }
         if(inputNum == 5)
         {
             int index;
             scanf( "%d", &index);
             StrList_printAt(Strlist,index);
+            printf("\n");
         }
         if(inputNum == 6)
         {
             int len = StrList_printLen(Strlist);
             printf( "%d", len);
+            printf("\n");
         }
         if(inputNum == 7)
         {
             char *word;
-            word = (char *)malloc(50 * sizeof(char));  
-            scanf("%s", word);
+            word = scan_word();
             int count = StrList_count(Strlist,word);
             printf( "%d", count);
             free(word);
+            printf("\n");
         }
         if(inputNum == 8)
         {
             char *word;
-            word = (char *)malloc(50 * sizeof(char));  
-            scanf("%s", word);
+            word = scan_word();
             StrList_remove(Strlist, word);
             free(word);
         }
