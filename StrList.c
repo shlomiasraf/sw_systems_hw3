@@ -196,7 +196,7 @@ void StrList_remove(StrList* StrList, const char* data)
     Node* previous = NULL;
     while (p != NULL) 
     {
-        if (p->_data != NULL && data != NULL && strcmp(p->_data, data) == 0) 
+        if (strcmp(p->_data, data) == 0) 
         {
             Node* temp = p;
             if (previous != NULL)
@@ -258,7 +258,7 @@ int StrList_isEqual(const StrList* StrList1, const StrList* StrList2)
             Node *p2 = StrList2->_head;
             while (p1 && p2) 
 	    {
-                if (p1->_data != NULL && p2->_data != NULL && strcmp(p1->_data, p2->_data) != 0) 
+                if (strcmp(p1->_data, p2->_data) != 0)) 
 		{
                     return 0;
                 }
@@ -326,7 +326,7 @@ void StrList_sort(StrList* StrList)
         p = StrList->_head;
         while (p->_next != last) 
         {
-            if (p->_data != NULL && p->_next->_data != NULL && strcmp(p->_data, p->_next->_data) > 0) 
+            if (strcmp(p->_data, p->_next->_data) > 0) 
             {
                 swap(p, p->_next);
                 swapped = 1;
@@ -346,7 +346,7 @@ int StrList_isSorted(StrList* StrList)
     Node* p = StrList->_head;
     while (p != NULL && p->_next != NULL)
     {
-        if (p->_data != NULL && p->_next->_data != NULL && strcmp(p->_data, p->_next->_data) > 0) 
+        if (strcmp(p->_data, p->_next->_data) > 0) 
         {
             return 0;
         }
