@@ -254,16 +254,16 @@ int StrList_isEqual(const StrList* StrList1, const StrList* StrList2)
 	{
             return 0;
         }
-            Node *p1 = StrList1->head;
-            Node *p2 = StrList2->head;
+            Node *p1 = StrList1->_head;
+            Node *p2 = StrList2->_head;
             while (p1 && p2) 
 	    {
                 if (strcmp(p1->_data, p2->_data) != 0) 
 		{
                     return 0;
                 }
-                p1 = p1->next;
-                p2 = p2->next;
+                p1 = p1->_next;
+                p2 = p2->_next;
             }
             return 1;
         }
