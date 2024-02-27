@@ -258,7 +258,7 @@ int StrList_isEqual(const StrList* StrList1, const StrList* StrList2)
             Node *p2 = StrList2->_head;
             while (p1 && p2) 
 	    {
-                if (strcmp(p1->_data, p2->_data) != 0)) 
+                if (strcmp(p1->_data, p2->_data) != 0) 
 		{
                     return 0;
                 }
