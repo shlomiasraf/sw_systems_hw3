@@ -51,6 +51,10 @@ int main()
             for(int i = 0; i < sizeNum; i++)
             {
                 char* word = get_word();
+                if (word == NULL) 
+                {
+                    return;
+                }
                 StrList_insertLast(Strlist ,word);
                 free(word);
             }
@@ -60,6 +64,10 @@ int main()
             int index;
             scanf( "%d", &index);
             char* word = get_word();
+            if (word == NULL) 
+            {
+                return;
+            }
             StrList_insertAt(Strlist ,word,index);
             free(word);
 
@@ -91,6 +99,11 @@ int main()
         {
             char *word;
             word = get_word();
+            if (word == NULL) 
+            {
+                printf( "%d", 0);
+                return;
+            }
             int count = StrList_count(Strlist,word);
             printf( "%d", count);
             free(word);
@@ -100,6 +113,10 @@ int main()
         {
             char *word;
             word = get_word();
+            if (word == NULL) 
+            {
+                return;
+            }
             StrList_remove(Strlist, word);
             free(word);
         }
